@@ -4,9 +4,11 @@ import EmptyNotesListImage from "images/EmptyNotesList";
 import { Plus } from "neetoicons";
 import { Button, PageLoader } from "neetoui";
 import { Container, Header } from "neetoui/layouts";
+import { useTranslation } from "react-i18next";
 
 import notesApi from "apis/notes";
 import EmptyState from "components/commons/EmptyState";
+import { SINGULAR, PLURAL } from "constants";
 
 import Card from "./Card";
 import {
@@ -28,9 +30,7 @@ const Notes = () => {
   const [notes, setNotes] = useState([]);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  useEffect(() => {
-    fetchNotes();
-  }, []);
+  const { t } = useTranslation();
 
   const fetchNotes = async () => {
     try {
@@ -46,6 +46,8 @@ const Notes = () => {
     }
   };
 
+  useEffect(() => fetchNotes(), []);
+
   if (isLoading) {
     return <PageLoader />;
   }
@@ -57,23 +59,25 @@ const Notes = () => {
         segmentBlocks={NOTES_SEGMENTS_MENU}
         showMenu={isMenuOpen}
         tagBlocks={NOTES_TAGS_MENU}
-        title="Notes"
+        title={t("common.noteWithCount", PLURAL)}
       />
       <Container>
         <Header
           menuBarToggle={() => setIsMenuOpen(prevState => !prevState)}
-          title="All Notes"
+          title={t("common.allNotes")}
           actionBlock={
             <Button
               icon={Plus}
-              label="Add Note"
               size="small"
+              label={t("button.addEntity", {
+                entity: t("common.noteWithCount", SINGULAR),
+              })}
               onClick={() => setShowNewNotePane(true)}
             />
           }
           searchProps={{
             value: searchTerm,
-            placeholder: "Search Name, Email, Phone Number Etc.",
+            placeholder: t("placeholder.search"),
             onChange: e => setSearchTerm(e.target.value),
           }}
         />
@@ -83,9 +87,11 @@ const Notes = () => {
           <EmptyState
             image={EmptyNotesListImage}
             primaryAction={() => setShowNewNotePane(true)}
-            primaryActionLabel="Add new note"
-            subtitle="Add your notes to send customized emails to them."
-            title="Looks like you don't have any notes!"
+            subtitle={t("emptyState.noteTitle")}
+            title={t("emptyState.noteSubtitle")}
+            primaryActionLabel={t("button.addEntity", {
+              entity: t("common.noteWithCount", SINGULAR),
+            })}
           />
         )}
         <NewNotePane

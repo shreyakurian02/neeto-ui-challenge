@@ -1,3 +1,4 @@
+import { t } from "i18next";
 import * as yup from "yup";
 
 export const NOTES_FORM_INITIAL_FORM_VALUES = {
@@ -6,54 +7,29 @@ export const NOTES_FORM_INITIAL_FORM_VALUES = {
 };
 
 export const NOTES_FORM_VALIDATION_SCHEMA = yup.object().shape({
-  title: yup.string().required("Title is required"),
-  description: yup.string().required("Description is required"),
+  title: yup.string().required(t("validations", { entity: "common.title" })),
+  description: yup
+    .string()
+    .required(t("validations", { entity: "common.description" })),
 });
 
 export const NOTES_COMMON_MENU = [
-  { label: "All", count: 200 },
-  { label: "Users", count: 80 },
-  { label: "Leads", count: 60 },
-  { label: "Visitors", count: 60 },
+  { label: t("menu.all"), count: 200, isActive: true },
+  { label: t("menu.users"), count: 80, isActive: false },
+  { label: t("menu.leads"), count: 60, isActive: false },
+  { label: t("menu.visitors"), count: 60, isActive: false },
 ];
 
 export const NOTES_SEGMENTS_MENU = [
-  { label: "Europe", count: 80 },
-  { label: "Middle-East", count: 60 },
-  { label: "Asia", count: 60 },
+  { label: t("menu.europe"), count: 80 },
+  { label: t("menu.middleEast"), count: 60 },
+  { label: t("menu.asia"), count: 60 },
 ];
 
 export const NOTES_TAGS_MENU = [
-  { label: "Sales", count: 80 },
-  { label: "Finance", count: 60 },
-  { label: "User Experience", count: 60 },
-];
-
-export const NOTES = [
-  {
-    title: "How to claim the warranty?",
-    description:
-      '"Are you getting my texts???" she texted to him. He glanced at it and chuckled under his breath. Of course he was getting them, but if he wasn\'t getting',
-    status: "Created",
-  },
-  {
-    title: "How to claim the warranty?",
-    description:
-      '"Are you getting my texts???" she texted to him. He glanced at it and chuckled under his breath. Of course he was getting them, but if he wasn\'t getting',
-    status: "Drafted",
-  },
-  {
-    title: "How to claim the warranty?",
-    description:
-      '"Are you getting my texts???" she texted to him. He glanced at it and chuckled under his breath. Of course he was getting them, but if he wasn\'t getting',
-    status: "Drafted",
-  },
-  {
-    title: "How to claim the warranty?",
-    description:
-      '"Are you getting my texts???" she texted to him. He glanced at it and chuckled under his breath. Of course he was getting them, but if he wasn\'t getting',
-    status: "Drafted",
-  },
+  { label: t("menu.sales"), count: 80 },
+  { label: t("menu.finance"), count: 60 },
+  { label: t("menu.userExperience"), count: 60 },
 ];
 
 export const USER_AVATAR_URL =
