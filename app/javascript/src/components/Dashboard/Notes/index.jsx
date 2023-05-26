@@ -1,25 +1,23 @@
 import React, { useState, useEffect } from "react";
 
-import EmptyNotesListImage from "images/EmptyNotesList";
 import { Plus } from "neetoicons";
 import { Button, PageLoader } from "neetoui";
 import { Container, Header } from "neetoui/layouts";
 import { useTranslation } from "react-i18next";
 
 import notesApi from "apis/notes";
-import EmptyState from "components/commons/EmptyState";
 import { SINGULAR, PLURAL } from "constants";
 
-import Card from "./Card";
 import {
-  NOTES_TAGS_MENU,
-  NOTES_SEGMENTS_MENU,
-  NOTES_COMMON_MENU,
+  TAG_MENU_BLOCKS,
+  SEGMENT_MENU_BLOCKS,
+  COMMON_MENU_BLOCKS,
 } from "./constants";
 import DeleteAlert from "./DeleteAlert";
+import List from "./List";
 import NewNotePane from "./Pane/Create";
 
-import Menubar from "../Menubar";
+import MenuBar from "../MenuBar";
 
 const Notes = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -54,16 +52,16 @@ const Notes = () => {
 
   return (
     <>
-      <Menubar
-        commonBlocks={NOTES_COMMON_MENU}
-        segmentBlocks={NOTES_SEGMENTS_MENU}
+      <MenuBar
+        commonBlocks={COMMON_MENU_BLOCKS}
+        segmentBlocks={SEGMENT_MENU_BLOCKS}
         showMenu={isMenuOpen}
-        tagBlocks={NOTES_TAGS_MENU}
+        tagBlocks={TAG_MENU_BLOCKS}
         title={t("common.noteWithCount", PLURAL)}
       />
       <Container>
         <Header
-          menuBarToggle={() => setIsMenuOpen(prevState => !prevState)}
+          menuBarToggle={() => setIsMenuOpen(isMenuOpen => !isMenuOpen)}
           title={t("common.allNotes")}
           actionBlock={
             <Button
@@ -81,19 +79,7 @@ const Notes = () => {
             onChange: e => setSearchTerm(e.target.value),
           }}
         />
-        {notes.length ? (
-          notes.map(note => <Card key={note.id} note={note} />)
-        ) : (
-          <EmptyState
-            image={EmptyNotesListImage}
-            primaryAction={() => setShowNewNotePane(true)}
-            subtitle={t("emptyState.noteTitle")}
-            title={t("emptyState.noteSubtitle")}
-            primaryActionLabel={t("button.addEntity", {
-              entity: t("common.noteWithCount", SINGULAR),
-            })}
-          />
-        )}
+        <List notes={notes} setShowNewNotePane={setShowNewNotePane} />
         <NewNotePane
           fetchNotes={fetchNotes}
           setShowPane={setShowNewNotePane}

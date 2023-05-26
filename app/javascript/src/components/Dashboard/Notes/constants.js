@@ -13,20 +13,20 @@ export const NOTES_FORM_VALIDATION_SCHEMA = yup.object().shape({
     .required(t("validations", { entity: "common.description" })),
 });
 
-export const NOTES_COMMON_MENU = [
+export const COMMON_MENU_BLOCKS = [
   { label: t("menu.all"), count: 200, isActive: true },
   { label: t("menu.users"), count: 80, isActive: false },
   { label: t("menu.leads"), count: 60, isActive: false },
   { label: t("menu.visitors"), count: 60, isActive: false },
 ];
 
-export const NOTES_SEGMENTS_MENU = [
+export const SEGMENT_MENU_BLOCKS = [
   { label: t("menu.europe"), count: 80 },
   { label: t("menu.middleEast"), count: 60 },
   { label: t("menu.asia"), count: 60 },
 ];
 
-export const NOTES_TAGS_MENU = [
+export const TAG_MENU_BLOCKS = [
   { label: t("menu.sales"), count: 80 },
   { label: t("menu.finance"), count: 60 },
   { label: t("menu.userExperience"), count: 60 },

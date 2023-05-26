@@ -5,7 +5,8 @@
     "noteWithCount_other": "Notes",
     "title": "Title",
     "description": "Description",
-    "createdAgo": "Created 2 hours ago"
+    "createdAgo": "Created 2 hours ago",
+    "gettingStarted": "Getting Started"
   },
   "button": {
     "addEntity": "Add {{entity}}"
