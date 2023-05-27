@@ -8,7 +8,7 @@ import { SINGULAR } from "constants";
 
 import Card from "./Card";
 
-const List = ({ notes = [], setShowNewNotePane }) => {
+const List = ({ notes = [], setShowNewNotePane, setIsDeleteAlertOpen }) => {
   const { t } = useTranslation();
 
   const isNotesEmpty = notes.length === 0;
@@ -30,7 +30,11 @@ const List = ({ notes = [], setShowNewNotePane }) => {
   return (
     <div className="w-full space-y-2">
       {notes.map(note => (
-        <Card key={note.id} note={note} />
+        <Card
+          key={note.id}
+          note={note}
+          setIsDeleteAlertOpen={setIsDeleteAlertOpen}
+        />
       ))}
     </div>
   );

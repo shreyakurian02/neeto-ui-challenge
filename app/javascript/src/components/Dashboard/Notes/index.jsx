@@ -22,9 +22,8 @@ import MenuBar from "../MenuBar";
 const Notes = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [showNewNotePane, setShowNewNotePane] = useState(false);
-  const [showDeleteAlert, setShowDeleteAlert] = useState(false);
+  const [isDeleteAlertOpen, setIsDeleteAlertOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedNoteIds, setSelectedNoteIds] = useState([]);
   const [notes, setNotes] = useState([]);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -79,20 +78,20 @@ const Notes = () => {
             onChange: e => setSearchTerm(e.target.value),
           }}
         />
-        <List notes={notes} setShowNewNotePane={setShowNewNotePane} />
+        <List
+          notes={notes}
+          setIsDeleteAlertOpen={setIsDeleteAlertOpen}
+          setShowNewNotePane={setShowNewNotePane}
+        />
         <NewNotePane
           fetchNotes={fetchNotes}
           setShowPane={setShowNewNotePane}
           showPane={showNewNotePane}
         />
-        {showDeleteAlert && (
-          <DeleteAlert
-            refetch={fetchNotes}
-            selectedNoteIds={selectedNoteIds}
-            setSelectedNoteIds={setSelectedNoteIds}
-            onClose={() => setShowDeleteAlert(false)}
-          />
-        )}
+        <DeleteAlert
+          isOpen={isDeleteAlertOpen}
+          onClose={() => setIsDeleteAlertOpen(false)}
+        />
       </Container>
     </>
   );

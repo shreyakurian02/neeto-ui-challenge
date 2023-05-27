@@ -38,5 +38,14 @@
   "actions": {
     "edit": "Edit",
     "delete": "Delete"
+  },
+  "alerts": {
+    "deleteTitle": "Delete {{entity}}",
+    "deleteMessage": "Are you sure you want to delete the {{entity}}? This cannot be undone."
+  },
+  "toastr": {
+    "success": {
+      "itemDeleted": "{{entity}} deleted successfully"
+    }
   }
 }
