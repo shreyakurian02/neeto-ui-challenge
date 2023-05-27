@@ -8,7 +8,7 @@ import { SINGULAR } from "constants";
 
 import Card from "./Card";
 
-const List = ({ notes = [], setShowNewNotePane, setIsDeleteAlertOpen }) => {
+const List = ({ notes = [], setIsNewNotePane, setIsDeleteAlertOpen }) => {
   const { t } = useTranslation();
 
   const isNotesEmpty = notes.length === 0;
@@ -17,11 +17,11 @@ const List = ({ notes = [], setShowNewNotePane, setIsDeleteAlertOpen }) => {
     return (
       <EmptyState
         image={EmptyNotesListImage}
-        primaryAction={() => setShowNewNotePane(true)}
+        primaryAction={() => setIsNewNotePane(true)}
         subtitle={t("emptyState.noteSubtitle")}
         title={t("emptyState.noteTitle")}
         primaryActionLabel={t("button.addEntity", {
-          entity: t("common.noteWithCount", SINGULAR),
+          entity: t("common.note", SINGULAR),
         })}
       />
     );

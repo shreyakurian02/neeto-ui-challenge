@@ -21,7 +21,7 @@ import MenuBar from "../MenuBar";
 
 const Notes = () => {
   const [isLoading, setIsLoading] = useState(true);
-  const [showNewNotePane, setShowNewNotePane] = useState(false);
+  const [isNewNotePane, setIsNewNotePane] = useState(false);
   const [isDeleteAlertOpen, setIsDeleteAlertOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [notes, setNotes] = useState([]);
@@ -56,7 +56,7 @@ const Notes = () => {
         segmentBlocks={SEGMENT_MENU_BLOCKS}
         showMenu={isMenuOpen}
         tagBlocks={TAG_MENU_BLOCKS}
-        title={t("common.noteWithCount", PLURAL)}
+        title={t("common.note", PLURAL)}
       />
       <Container>
         <Header
@@ -67,9 +67,9 @@ const Notes = () => {
               icon={Plus}
               size="small"
               label={t("button.addEntity", {
-                entity: t("common.noteWithCount", SINGULAR),
+                entity: t("common.note", SINGULAR),
               })}
-              onClick={() => setShowNewNotePane(true)}
+              onClick={() => setIsNewNotePane(true)}
             />
           }
           searchProps={{
@@ -81,12 +81,12 @@ const Notes = () => {
         <List
           notes={notes}
           setIsDeleteAlertOpen={setIsDeleteAlertOpen}
-          setShowNewNotePane={setShowNewNotePane}
+          setIsNewNotePane={setIsNewNotePane}
         />
         <NewNotePane
           fetchNotes={fetchNotes}
-          setShowPane={setShowNewNotePane}
-          showPane={showNewNotePane}
+          setShowPane={setIsNewNotePane}
+          showPane={isNewNotePane}
         />
         <DeleteAlert
           isOpen={isDeleteAlertOpen}

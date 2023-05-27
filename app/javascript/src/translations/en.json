@@ -1,28 +1,43 @@
 {
   "common": {
     "allNotes": "All Notes",
-    "noteWithCount_one": "Note",
-    "noteWithCount_other": "Notes",
+    "note_one": "Note",
+    "note_other": "Notes",
     "title": "Title",
     "description": "Description",
+    "tag_one": "Tag",
+    "tag_other": "Tags",
+    "assignedContact": "Assigned Contact",
     "createdAgo": "Created {{time}}",
-    "gettingStarted": "Getting Started"
+    "gettingStarted": "Getting Started",
+    "onboarding": "Onboarding",
+    "userFlow": "User Flow",
+    "bugs": "Bugs",
+    "ux": "UX",
+    "v2": "V2"
   },
   "button": {
-    "addEntity": "Add {{entity}}"
+    "addEntity": "Add {{entity}}",
+    "saveChanges": "Save Changes",
+    "cancel": "Cancel",
+    "update": "Update"
   },
   "placeholder": {
-    "search": "Search Name, Email, Phone Number Etc."
+    "search": "Search Name, Email, Phone Number Etc.",
+    "title": "Enter title",
+    "description": "Enter description",
+    "selectRole": "Select role",
+    "selectTags": "Select tags"
   },
   "emptyState": {
     "noteTitle": "Looks like you don't have any notes!",
     "noteSubtitle": "Add your notes to send customized emails to them."
   },
   "validations": {
-    "required": "{{entity}} is required"
+    "required": "{{entity}} is required",
+    "minimum": "Atleast {{value}} {{entity}} is required"
   },
   "menu": {
-    "tags": "Tags",
     "segments": "Segments",
     "all": "All",
     "users": "Users",
@@ -47,5 +62,8 @@
     "success": {
       "itemDeleted": "{{entity}} deleted successfully"
     }
+  },
+  "headers": {
+    "addNote": "Add New Note"
   }
 }

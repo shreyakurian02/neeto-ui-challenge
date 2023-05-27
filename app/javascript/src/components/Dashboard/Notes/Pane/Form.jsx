@@ -1,14 +1,19 @@
 import React from "react";
 
 import { Formik, Form as FormikForm } from "formik";
+import { Check } from "neetoicons";
 import { Button, Pane } from "neetoui";
-import { Input, Textarea } from "neetoui/formik";
+import { Input, Select, Textarea } from "neetoui/formik";
+import { useTranslation } from "react-i18next";
 
 import notesApi from "apis/notes";
+import { PLURAL } from "constants";
 
-import { NOTES_FORM_VALIDATION_SCHEMA } from "../constants";
+import { VALIDATION_SCHEMA, TAGS, ASSIGNED_CONTACTS } from "../constants";
 
 const Form = ({ onClose, refetch, note, isEdit }) => {
+  const { t } = useTranslation();
+
   const handleSubmit = async values => {
     try {
       if (isEdit) {
@@ -26,36 +31,57 @@ const Form = ({ onClose, refetch, note, isEdit }) => {
   return (
     <Formik
       initialValues={note}
-      validationSchema={NOTES_FORM_VALIDATION_SCHEMA}
+      validationSchema={VALIDATION_SCHEMA}
       onSubmit={handleSubmit}
     >
       {({ isSubmitting }) => (
-        <FormikForm className="w-full">
+        <FormikForm noValidate className="w-full">
           <Pane.Body className="space-y-6">
             <Input
               required
               className="w-full flex-grow-0"
-              label="Title"
+              label={t("common.title")}
               name="title"
+              placeholder={t("placeholder.title")}
             />
             <Textarea
               required
               className="w-full flex-grow-0"
-              label="Description"
+              label={t("common.description")}
               name="description"
-              rows={8}
+              placeholder={t("placeholder.description")}
+              rows={1}
+            />
+            <Select
+              isSearchable
+              required
+              className="w-full flex-grow-0"
+              label={t("common.assignedContact")}
+              name="assignedContact"
+              options={ASSIGNED_CONTACTS}
+              placeholder={t("placeholder.selectRole")}
+            />
+            <Select
+              isMulti
+              isSearchable
+              required
+              className="w-full flex-grow-0"
+              label={t("common.tag", PLURAL)}
+              name="tags"
+              options={TAGS}
+              placeholder={t("placeholder.selectTags")}
             />
           </Pane.Body>
           <Pane.Footer>
             <Button
               className="mr-3"
               disabled={isSubmitting}
-              label={isEdit ? "Update" : "Save changes"}
+              icon={Check}
+              label={isEdit ? t("button.update") : t("button.saveChanges")}
               loading={isSubmitting}
-              style="primary"
               type="submit"
             />
-            <Button label="Cancel" style="text" onClick={onClose} />
+            <Button label={t("button.cancel")} style="text" onClick={onClose} />
           </Pane.Footer>
         </FormikForm>
       )}

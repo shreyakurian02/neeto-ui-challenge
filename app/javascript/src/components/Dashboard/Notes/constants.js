@@ -1,16 +1,45 @@
 import { t } from "i18next";
 import * as yup from "yup";
 
-export const NOTES_FORM_INITIAL_FORM_VALUES = {
+import { SINGULAR } from "constants";
+
+export const INITIAL_FORM_VALUES = {
   title: "",
   description: "",
+  assignedContact: null,
+  tags: [],
 };
 
-export const NOTES_FORM_VALIDATION_SCHEMA = yup.object().shape({
-  title: yup.string().required(t("validations", { entity: "common.title" })),
+export const VALIDATION_SCHEMA = yup.object().shape({
+  title: yup
+    .string()
+    .required(t("validations.required", { entity: t("common.title") })),
   description: yup
     .string()
-    .required(t("validations", { entity: "common.description" })),
+    .required(t("validations.required", { entity: t("common.description") })),
+  assignedContact: yup
+    .object()
+    .shape({
+      label: yup.string(),
+      value: yup.string(),
+    })
+    .nullable()
+    .required(
+      t("validations.required", { entity: t("common.assignedContact") })
+    ),
+  tags: yup
+    .array()
+    .of(
+      yup.object().shape({
+        label: yup.string(),
+        value: yup.string(),
+      })
+    )
+    .min(
+      1,
+      t("validations.minimum", { value: 1, entity: t("common.tag", SINGULAR) })
+    )
+    .required(t("validations.required", { entity: t("common.tag", SINGULAR) })),
 });
 
 export const COMMON_MENU_BLOCKS = [
@@ -34,3 +63,36 @@ export const TAG_MENU_BLOCKS = [
 
 export const USER_AVATAR_URL =
   "https://randomuser.me/api/portraits/women/80.jpg";
+
+export const ASSIGNED_CONTACTS = [
+  { label: "Oliver Smith", value: "oliver-smith" },
+  { label: "Eve Smith", value: "eve-smith" },
+  { label: "Sam Smith", value: "sam-smith" },
+];
+
+export const TAGS = [
+  {
+    label: t("common.gettingStarted"),
+    value: "getting_started",
+  },
+  {
+    label: t("common.onboarding"),
+    value: "onboarding",
+  },
+  {
+    label: t("common.userFlow"),
+    value: "user_flow",
+  },
+  {
+    label: t("common.bugs"),
+    value: "bugs",
+  },
+  {
+    label: t("common.ux"),
+    value: "ux",
+  },
+  {
+    label: t("common.v2"),
+    value: "v2",
+  },
+];
