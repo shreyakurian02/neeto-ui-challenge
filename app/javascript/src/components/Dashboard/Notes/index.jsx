@@ -21,7 +21,7 @@ import MenuBar from "../MenuBar";
 
 const Notes = () => {
   const [isLoading, setIsLoading] = useState(true);
-  const [showNewNotePane, setShowNewNotePane] = useState(false);
+  const [isNewNotePane, setIsNewNotePane] = useState(false);
   const [isDeleteAlertOpen, setIsDeleteAlertOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [notes, setNotes] = useState([]);
@@ -69,7 +69,7 @@ const Notes = () => {
               label={t("button.addEntity", {
                 entity: t("common.noteWithCount", SINGULAR),
               })}
-              onClick={() => setShowNewNotePane(true)}
+              onClick={() => setIsNewNotePane(true)}
             />
           }
           searchProps={{
@@ -81,12 +81,12 @@ const Notes = () => {
         <List
           notes={notes}
           setIsDeleteAlertOpen={setIsDeleteAlertOpen}
-          setShowNewNotePane={setShowNewNotePane}
+          setIsNewNotePane={setIsNewNotePane}
         />
         <NewNotePane
           fetchNotes={fetchNotes}
-          setShowPane={setShowNewNotePane}
-          showPane={showNewNotePane}
+          setShowPane={setIsNewNotePane}
+          showPane={isNewNotePane}
         />
         <DeleteAlert
           isOpen={isDeleteAlertOpen}

@@ -1,16 +1,38 @@
 import { t } from "i18next";
 import * as yup from "yup";
 
-export const NOTES_FORM_INITIAL_FORM_VALUES = {
+export const INITIAL_FORM_VALUES = {
   title: "",
   description: "",
+  assignedContact: null,
+  tags: [],
 };
 
-export const NOTES_FORM_VALIDATION_SCHEMA = yup.object().shape({
-  title: yup.string().required(t("validations", { entity: "common.title" })),
+export const VALIDATION_SCHEMA = yup.object().shape({
+  title: yup
+    .string()
+    .required(t("validations.required", { entity: t("common.title") })),
   description: yup
     .string()
-    .required(t("validations", { entity: "common.description" })),
+    .required(t("validations.required", { entity: t("common.description") })),
+  assignedContact: yup
+    .object()
+    .shape({
+      label: yup.string(),
+      value: yup.string(),
+    })
+    .nullable()
+    .required("Assigned Contact is required"),
+  tags: yup
+    .array()
+    .of(
+      yup.object().shape({
+        label: yup.string(),
+        value: yup.string(),
+      })
+    )
+    .min(1, "Atleast one tag is required")
+    .required("Tag is required"),
 });
 
 export const COMMON_MENU_BLOCKS = [
@@ -34,3 +56,36 @@ export const TAG_MENU_BLOCKS = [
 
 export const USER_AVATAR_URL =
   "https://randomuser.me/api/portraits/women/80.jpg";
+
+export const ASSIGNED_CONTACTS = [
+  { label: "Oliver Smith", value: "oliver-smith" },
+  { label: "Eve Smith", value: "eve-smith" },
+  { label: "Sam Smith", value: "sam-smith" },
+];
+
+export const TAGS = [
+  {
+    label: "Getting Started",
+    value: "getting_started",
+  },
+  {
+    label: "Onboarding",
+    value: "onboarding",
+  },
+  {
+    label: "User Flow",
+    value: "user_flow",
+  },
+  {
+    label: "Bugs",
+    value: "bugs",
+  },
+  {
+    label: "UX",
+    value: "ux",
+  },
+  {
+    label: "V2",
+    value: "v2",
+  },
+];

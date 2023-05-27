@@ -1,12 +1,13 @@
 import React from "react";
 
 import { Formik, Form as FormikForm } from "formik";
+import { Check } from "neetoicons";
 import { Button, Pane } from "neetoui";
-import { Input, Textarea } from "neetoui/formik";
+import { Input, Select, Textarea } from "neetoui/formik";
 
 import notesApi from "apis/notes";
 
-import { NOTES_FORM_VALIDATION_SCHEMA } from "../constants";
+import { VALIDATION_SCHEMA, TAGS, ASSIGNED_CONTACTS } from "../constants";
 
 const Form = ({ onClose, refetch, note, isEdit }) => {
   const handleSubmit = async values => {
@@ -26,11 +27,11 @@ const Form = ({ onClose, refetch, note, isEdit }) => {
   return (
     <Formik
       initialValues={note}
-      validationSchema={NOTES_FORM_VALIDATION_SCHEMA}
+      validationSchema={VALIDATION_SCHEMA}
       onSubmit={handleSubmit}
     >
       {({ isSubmitting }) => (
-        <FormikForm className="w-full">
+        <FormikForm noValidate className="w-full">
           <Pane.Body className="space-y-6">
             <Input
               required
@@ -43,13 +44,35 @@ const Form = ({ onClose, refetch, note, isEdit }) => {
               className="w-full flex-grow-0"
               label="Description"
               name="description"
-              rows={8}
+              placeholder="Enter note description"
+              rows={1}
+            />
+            <Select
+              isSearchable
+              required
+              className="w-full flex-grow-0"
+              label="Assigned Contact"
+              name="assignedContact"
+              options={ASSIGNED_CONTACTS}
+              placeholder="Select Role"
+            />
+            <Select
+              isMulti
+              isSearchable
+              required
+              className="w-full flex-grow-0"
+              label="Tags"
+              name="tags"
+              options={TAGS}
+              placeholder="Select Tags"
             />
           </Pane.Body>
           <Pane.Footer>
             <Button
               className="mr-3"
               disabled={isSubmitting}
+              icon={Check}
+              iconPosition="right"
               label={isEdit ? "Update" : "Save changes"}
               loading={isSubmitting}
               style="primary"
