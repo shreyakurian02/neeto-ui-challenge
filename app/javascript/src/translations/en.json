@@ -5,7 +5,7 @@
     "noteWithCount_other": "Notes",
     "title": "Title",
     "description": "Description",
-    "createdAgo": "Created 2 hours ago",
+    "createdAgo": "Created {{time}}",
     "gettingStarted": "Getting Started"
   },
   "button": {
