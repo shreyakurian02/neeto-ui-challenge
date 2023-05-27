@@ -89,7 +89,7 @@ const Notes = () => {
           showPane={showNewNotePane}
         />
         <DeleteAlert
-          isDeleteAlertOpen={isDeleteAlertOpen}
+          isOpen={isDeleteAlertOpen}
           onClose={() => setIsDeleteAlertOpen(false)}
         />
       </Container>

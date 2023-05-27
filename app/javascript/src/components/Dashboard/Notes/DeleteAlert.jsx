@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 
 import { SINGULAR } from "constants";
 
-const DeleteAlert = ({ onClose, isDeleteAlertOpen }) => {
+const DeleteAlert = ({ onClose, isOpen }) => {
   const { t } = useTranslation();
 
   const handleDelete = () => {
@@ -19,7 +19,7 @@ const DeleteAlert = ({ onClose, isDeleteAlertOpen }) => {
 
   return (
     <Alert
-      isOpen={isDeleteAlertOpen}
+      isOpen={isOpen}
       message={t("alerts.deleteMessage", {
         entity: t("common.noteWithCount", SINGULAR).toLowerCase(),
       })}
