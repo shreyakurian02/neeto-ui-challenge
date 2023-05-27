@@ -37,7 +37,10 @@ export const VALIDATION_SCHEMA = yup.object().shape({
     )
     .min(
       1,
-      t("validations.minimum", { value: 1, entity: t("common.tag", SINGULAR) })
+      t("validations.minimum", {
+        value: 1,
+        entity: t("common.tag", SINGULAR).toLowerCase(),
+      })
     )
     .required(t("validations.required", { entity: t("common.tag", SINGULAR) })),
 });

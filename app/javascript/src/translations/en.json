@@ -10,7 +10,7 @@
     "description": "Description",
     "tag_one": "Tag",
     "tag_other": "Tags",
-    "assignedContact": "Assigned Contact",
+    "assignedContact": "Assigned contact",
     "createdAgo": "Created {{time}}",
     "gettingStarted": "Getting Started",
     "onboarding": "Onboarding",
@@ -20,7 +20,8 @@
     "v2": "V2",
     "nameAndRole": "Name & role",
     "email": "Email",
-    "createdAt": "Created at"
+    "createdAt": "Created at",
+    "settings": "Settings"
   },
   "button": {
     "addEntity": "Add {{entity}}",
