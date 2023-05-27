@@ -5,7 +5,7 @@ import { Typography, Dropdown } from "neetoui";
 import { useTranslation } from "react-i18next";
 import { noop } from "utils";
 
-const Header = ({ title }) => {
+const Header = ({ title, setIsDeleteAlertOpen }) => {
   const { t } = useTranslation();
 
   const {
@@ -19,7 +19,9 @@ const Header = ({ title }) => {
       <Dropdown buttonStyle="text" className="p-4" icon={MenuVertical}>
         <Menu>
           <Button onClick={noop}>{t("actions.edit")}</Button>
-          <Button onClick={noop}>{t("actions.delete")}</Button>
+          <Button onClick={() => setIsDeleteAlertOpen(true)}>
+            {t("actions.delete")}
+          </Button>
         </Menu>
       </Dropdown>
     </div>
