@@ -1,6 +1,8 @@
 import { t } from "i18next";
 import * as yup from "yup";
 
+import { SINGULAR } from "constants";
+
 export const INITIAL_FORM_VALUES = {
   title: "",
   description: "",
@@ -22,7 +24,9 @@ export const VALIDATION_SCHEMA = yup.object().shape({
       value: yup.string(),
     })
     .nullable()
-    .required("Assigned Contact is required"),
+    .required(
+      t("validations.required", { entity: t("common.assignedContact") })
+    ),
   tags: yup
     .array()
     .of(
@@ -31,8 +35,11 @@ export const VALIDATION_SCHEMA = yup.object().shape({
         value: yup.string(),
       })
     )
-    .min(1, "Atleast one tag is required")
-    .required("Tag is required"),
+    .min(
+      1,
+      t("validations.minimum", { value: 1, entity: t("common.tag", SINGULAR) })
+    )
+    .required(t("validations.required", { entity: t("common.tag", SINGULAR) })),
 });
 
 export const COMMON_MENU_BLOCKS = [
@@ -65,27 +72,27 @@ export const ASSIGNED_CONTACTS = [
 
 export const TAGS = [
   {
-    label: "Getting Started",
+    label: t("common.gettingStarted"),
     value: "getting_started",
   },
   {
-    label: "Onboarding",
+    label: t("common.onboarding"),
     value: "onboarding",
   },
   {
-    label: "User Flow",
+    label: t("common.userFlow"),
     value: "user_flow",
   },
   {
-    label: "Bugs",
+    label: t("common.bugs"),
     value: "bugs",
   },
   {
-    label: "UX",
+    label: t("common.ux"),
     value: "ux",
   },
   {
-    label: "V2",
+    label: t("common.v2"),
     value: "v2",
   },
 ];

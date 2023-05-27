@@ -56,7 +56,7 @@ const Notes = () => {
         segmentBlocks={SEGMENT_MENU_BLOCKS}
         showMenu={isMenuOpen}
         tagBlocks={TAG_MENU_BLOCKS}
-        title={t("common.noteWithCount", PLURAL)}
+        title={t("common.note", PLURAL)}
       />
       <Container>
         <Header
@@ -67,7 +67,7 @@ const Notes = () => {
               icon={Plus}
               size="small"
               label={t("button.addEntity", {
-                entity: t("common.noteWithCount", SINGULAR),
+                entity: t("common.note", SINGULAR),
               })}
               onClick={() => setIsNewNotePane(true)}
             />

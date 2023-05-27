@@ -21,7 +21,7 @@ const List = ({ notes = [], setIsNewNotePane, setIsDeleteAlertOpen }) => {
         subtitle={t("emptyState.noteSubtitle")}
         title={t("emptyState.noteTitle")}
         primaryActionLabel={t("button.addEntity", {
-          entity: t("common.noteWithCount", SINGULAR),
+          entity: t("common.note", SINGULAR),
         })}
       />
     );

@@ -10,9 +10,7 @@ const DeleteAlert = ({ onClose, isOpen }) => {
 
   const handleDelete = () => {
     Toastr.success(
-      t("toastr.success.itemDeleted", {
-        entity: t("common.noteWithCount", SINGULAR),
-      })
+      t("toastr.success.itemDeleted", { entity: t("common.note", SINGULAR) })
     );
     onClose();
   };
@@ -20,11 +18,9 @@ const DeleteAlert = ({ onClose, isOpen }) => {
   return (
     <Alert
       isOpen={isOpen}
+      title={t("alerts.deleteTitle", { entity: t("common.note", SINGULAR) })}
       message={t("alerts.deleteMessage", {
-        entity: t("common.noteWithCount", SINGULAR).toLowerCase(),
-      })}
-      title={t("alerts.deleteTitle", {
-        entity: t("common.noteWithCount", SINGULAR),
+        entity: t("common.note", SINGULAR).toLowerCase(),
       })}
       onClose={onClose}
       onSubmit={handleDelete}

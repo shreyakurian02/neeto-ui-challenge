@@ -4,12 +4,16 @@ import { Formik, Form as FormikForm } from "formik";
 import { Check } from "neetoicons";
 import { Button, Pane } from "neetoui";
 import { Input, Select, Textarea } from "neetoui/formik";
+import { useTranslation } from "react-i18next";
 
 import notesApi from "apis/notes";
+import { PLURAL } from "constants";
 
 import { VALIDATION_SCHEMA, TAGS, ASSIGNED_CONTACTS } from "../constants";
 
 const Form = ({ onClose, refetch, note, isEdit }) => {
+  const { t } = useTranslation();
+
   const handleSubmit = async values => {
     try {
       if (isEdit) {
@@ -36,35 +40,36 @@ const Form = ({ onClose, refetch, note, isEdit }) => {
             <Input
               required
               className="w-full flex-grow-0"
-              label="Title"
+              label={t("common.title")}
               name="title"
+              placeholder={t("placeholder.title")}
             />
             <Textarea
               required
               className="w-full flex-grow-0"
-              label="Description"
+              label={t("common.description")}
               name="description"
-              placeholder="Enter note description"
+              placeholder={t("placeholder.description")}
               rows={1}
             />
             <Select
               isSearchable
               required
               className="w-full flex-grow-0"
-              label="Assigned Contact"
+              label={t("common.assignedContact")}
               name="assignedContact"
               options={ASSIGNED_CONTACTS}
-              placeholder="Select Role"
+              placeholder={t("placeholder.selectRole")}
             />
             <Select
               isMulti
               isSearchable
               required
               className="w-full flex-grow-0"
-              label="Tags"
+              label={t("common.tag", PLURAL)}
               name="tags"
               options={TAGS}
-              placeholder="Select Tags"
+              placeholder={t("placeholder.selectTags")}
             />
           </Pane.Body>
           <Pane.Footer>
@@ -72,13 +77,11 @@ const Form = ({ onClose, refetch, note, isEdit }) => {
               className="mr-3"
               disabled={isSubmitting}
               icon={Check}
-              iconPosition="right"
-              label={isEdit ? "Update" : "Save changes"}
+              label={isEdit ? t("button.update") : t("button.saveChanges")}
               loading={isSubmitting}
-              style="primary"
               type="submit"
             />
-            <Button label="Cancel" style="text" onClick={onClose} />
+            <Button label={t("button.cancel")} style="text" onClick={onClose} />
           </Pane.Footer>
         </FormikForm>
       )}
