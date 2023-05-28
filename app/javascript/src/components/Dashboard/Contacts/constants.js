@@ -1,45 +1,7 @@
-import React from "react";
-
 import { t } from "i18next";
-import { Avatar, Typography } from "neetoui";
 import * as yup from "yup";
 
 import { SINGULAR } from "constants";
-
-export const COLUMN_DATA = [
-  {
-    dataIndex: "name",
-    key: "name",
-    title: t("common.nameAndRole"),
-    render: (text, { profileImage }) => (
-      <div className="flex items-center space-x-3">
-        <Avatar
-          size="large"
-          user={{
-            imageUrl: profileImage,
-            name: text,
-          }}
-        />
-        <Typography style="h4">{text}</Typography>
-      </div>
-    ),
-  },
-  {
-    dataIndex: "email",
-    key: "email",
-    title: t("common.email"),
-  },
-  {
-    dataIndex: "createdAt",
-    key: "createdAt",
-    title: t("common.createdAt"),
-  },
-  {
-    dataIndex: "action",
-    key: "action",
-    align: "right",
-  },
-];
 
 export const ROW_DATA = [
   {

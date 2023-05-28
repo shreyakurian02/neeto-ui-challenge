@@ -43,8 +43,9 @@
     "selectTags": "Select tags"
   },
   "emptyState": {
-    "noteTitle": "Looks like you don't have any notes!",
-    "noteSubtitle": "Add your notes to send customized emails to them."
+    "entityTitle": "Looks like you don't have any {{entity}}!",
+    "noteSubtitle": "Add your notes to send customized emails to them.",
+    "contactSubtitle": "Add contacts"
   },
   "validations": {
     "required": "{{entity}} is required",
