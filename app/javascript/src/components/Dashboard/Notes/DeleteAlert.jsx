@@ -18,8 +18,10 @@ const DeleteAlert = ({ onClose, isOpen }) => {
   return (
     <Alert
       isOpen={isOpen}
-      title={t("alerts.deleteTitle", { entity: t("common.note", SINGULAR) })}
       message={t("alerts.deleteMessage", {
+        entity: t("common.note", SINGULAR).toLowerCase(),
+      })}
+      title={t("alerts.deleteTitle", {
         entity: t("common.note", SINGULAR).toLowerCase(),
       })}
       onClose={onClose}

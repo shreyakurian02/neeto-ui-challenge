@@ -19,22 +19,14 @@ export const VALIDATION_SCHEMA = yup.object().shape({
     .required(t("validations.required", { entity: t("common.description") })),
   assignedContact: yup
     .object()
-    .shape({
-      label: yup.string(),
-      value: yup.string(),
-    })
+    .shape({ label: yup.string(), value: yup.string() })
     .nullable()
     .required(
       t("validations.required", { entity: t("common.assignedContact") })
     ),
   tags: yup
     .array()
-    .of(
-      yup.object().shape({
-        label: yup.string(),
-        value: yup.string(),
-      })
-    )
+    .of(yup.object().shape({ label: yup.string(), value: yup.string() }))
     .min(
       1,
       t("validations.minimum", {

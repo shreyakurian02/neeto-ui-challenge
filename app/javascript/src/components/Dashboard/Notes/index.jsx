@@ -67,7 +67,7 @@ const Notes = () => {
               icon={Plus}
               size="small"
               label={t("button.addEntity", {
-                entity: t("common.note", SINGULAR),
+                entity: t("common.note", SINGULAR).toLowerCase(),
               })}
               onClick={() => setIsNewNotePane(true)}
             />
@@ -85,8 +85,8 @@ const Notes = () => {
         />
         <NewNotePane
           fetchNotes={fetchNotes}
-          setShowPane={setIsNewNotePane}
-          showPane={isNewNotePane}
+          isOpen={isNewNotePane}
+          onClose={() => setIsNewNotePane(false)}
         />
         <DeleteAlert
           isOpen={isDeleteAlertOpen}

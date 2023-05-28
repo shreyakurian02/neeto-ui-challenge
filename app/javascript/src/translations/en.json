@@ -1,11 +1,11 @@
 {
   "common": {
-    "allNotes": "All Notes",
+    "allNotes": "All notes",
     "note_one": "Note",
     "note_other": "Notes",
     "contact_one": "Contact",
     "contact_other": "Contacts",
-    "allContacts": "All Contacts",
+    "allContacts": "All contacts",
     "title": "Title",
     "description": "Description",
     "tag_one": "Tag",
@@ -20,18 +20,26 @@
     "v2": "V2",
     "nameAndRole": "Name & role",
     "email": "Email",
+    "emailAddress": "Email address",
     "createdAt": "Created at",
-    "settings": "Settings"
+    "settings": "Settings",
+    "admin": "Admin",
+    "owner": "Owner",
+    "firstName": "First name",
+    "lastName": "Last name",
+    "role_one": "Role",
+    "role_other": "Roles"
   },
   "button": {
     "addEntity": "Add {{entity}}",
-    "saveChanges": "Save Changes",
+    "saveChanges": "Save changes",
     "cancel": "Cancel",
     "update": "Update"
   },
   "placeholder": {
-    "search": "Search Name, Email, Phone Number Etc.",
+    "search": "Search name, email, phone mumber etc.",
     "title": "Enter title",
+    "enterField": "Enter {{field}}",
     "description": "Enter description",
     "selectRole": "Select role",
     "selectTags": "Select tags"
@@ -42,7 +50,8 @@
   },
   "validations": {
     "required": "{{entity}} is required",
-    "minimum": "Atleast {{value}} {{entity}} is required"
+    "minimum": "Atleast {{value}} {{entity}} is required",
+    "invalidEmail": "Email address must be valid"
   },
   "menu": {
     "segments": "Segments",
@@ -70,10 +79,12 @@
   },
   "toastr": {
     "success": {
+      "itemAdded": "{{entity}} added successfully",
+      "itemUpdated": "{{entity}} updated successfully",
       "itemDeleted": "{{entity}} deleted successfully"
     }
   },
   "headers": {
-    "addNote": "Add New Note"
+    "addEntity": "Add new {{entity}}"
   }
 }
