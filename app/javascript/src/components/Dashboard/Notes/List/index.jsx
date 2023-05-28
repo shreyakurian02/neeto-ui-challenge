@@ -4,7 +4,7 @@ import EmptyNotesListImage from "images/EmptyNotesList";
 import { useTranslation } from "react-i18next";
 
 import EmptyState from "components/commons/EmptyState";
-import { SINGULAR } from "constants";
+import { SINGULAR, PLURAL } from "constants";
 
 import Card from "./Card";
 
@@ -19,9 +19,11 @@ const List = ({ notes = [], setIsNewNotePane, setIsDeleteAlertOpen }) => {
         image={EmptyNotesListImage}
         primaryAction={() => setIsNewNotePane(true)}
         subtitle={t("emptyState.noteSubtitle")}
-        title={t("emptyState.noteTitle")}
         primaryActionLabel={t("button.addEntity", {
           entity: t("common.note", SINGULAR),
+        })}
+        title={t("emptyState.entityTitle", {
+          entity: t("common.note", PLURAL),
         })}
       />
     );

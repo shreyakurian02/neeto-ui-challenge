@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 
 import classnames from "classnames";
+import EmptyListImage from "images/EmptyNotesList";
 import { Plus } from "neetoicons";
 import { Button, Table, Alert, Toastr } from "neetoui";
 import { Container, Header } from "neetoui/layouts";
 import { useTranslation } from "react-i18next";
 
+import EmptyState from "components/commons/EmptyState";
 import MenuBar from "components/Dashboard/MenuBar";
 import { SINGULAR, PLURAL } from "constants";
 
@@ -57,20 +59,34 @@ const Contacts = () => {
             onChange: e => setSearchTerm(e.target.value),
           }}
         />
-        <Table
-          fixedHeight
-          rowSelection
-          columnData={getColumnData(setIsDeleteAlertOpen)}
-          defaultPageSize={DEFAULT_PAGE_SIZE}
-          rowData={ROW_DATA}
-          selectedRowKeys={selectedRowIds}
-          shouldDynamicallyRenderRowSize={false}
-          totalCount={20}
-          rowClassName={(_, index) =>
-            classnames({ "neeto-ui-bg-gray-200": index % 2 !== 0 })
-          }
-          onRowSelect={handleRowSelect}
-        />
+        {ROW_DATA.length ? (
+          <Table
+            fixedHeight
+            rowSelection
+            columnData={getColumnData(setIsDeleteAlertOpen)}
+            defaultPageSize={DEFAULT_PAGE_SIZE}
+            rowData={ROW_DATA}
+            selectedRowKeys={selectedRowIds}
+            shouldDynamicallyRenderRowSize={false}
+            totalCount={20}
+            rowClassName={(_, index) =>
+              classnames({ "neeto-ui-bg-gray-200": index % 2 !== 0 })
+            }
+            onRowSelect={handleRowSelect}
+          />
+        ) : (
+          <EmptyState
+            image={EmptyListImage}
+            primaryAction={() => setIsNewContactPaneOpen(true)}
+            subtitle={t("emptyState.contactSubtitle")}
+            primaryActionLabel={t("button.addEntity", {
+              entity: t("common.contact", SINGULAR).toLowerCase(),
+            })}
+            title={t("emptyState.entityTitle", {
+              entity: t("common.contact", PLURAL).toLowerCase(),
+            })}
+          />
+        )}
         <NewContactPane
           isOpen={isNewContactPaneOpen}
           onClose={() => setIsNewContactPaneOpen(false)}
