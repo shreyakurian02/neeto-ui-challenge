@@ -37,10 +37,8 @@
     "update": "Update"
   },
   "placeholder": {
-    "search": "Search name, email, phone mumber etc.",
-    "title": "Enter title",
+    "search": "Search name, email, phone number etc.",
     "enterField": "Enter {{field}}",
-    "description": "Enter description",
     "selectRole": "Select role",
     "selectTags": "Select tags"
   },

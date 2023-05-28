@@ -7,8 +7,6 @@ import { SINGULAR } from "constants";
 
 import Form from "./Form";
 
-import { INITIAL_FORM_VALUES } from "../constants";
-
 const Create = ({ isOpen, onClose }) => {
   const { t } = useTranslation();
 
@@ -21,7 +19,7 @@ const Create = ({ isOpen, onClose }) => {
           })}
         </Typography>
       </Pane.Header>
-      <Form contact={INITIAL_FORM_VALUES} onClose={onClose} />
+      <Form onClose={onClose} />
     </Pane>
   );
 };

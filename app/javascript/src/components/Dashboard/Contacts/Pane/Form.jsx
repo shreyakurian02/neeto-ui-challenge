@@ -8,9 +8,9 @@ import { useTranslation } from "react-i18next";
 
 import { SINGULAR, PLURAL } from "constants";
 
-import { ROLES, VALIDATION_SCHEMA } from "../constants";
+import { INITIAL_FORM_VALUES, ROLES, VALIDATION_SCHEMA } from "../constants";
 
-const Form = ({ contact, onClose }) => {
+const Form = ({ onClose }) => {
   const { t } = useTranslation();
 
   const handleSubmit = () => {
@@ -22,7 +22,7 @@ const Form = ({ contact, onClose }) => {
 
   return (
     <Formik
-      initialValues={contact}
+      initialValues={INITIAL_FORM_VALUES}
       validationSchema={VALIDATION_SCHEMA}
       onSubmit={handleSubmit}
     >

@@ -110,10 +110,10 @@ export const ROW_DATA = [
 ];
 
 export const COMMON_MENU_BLOCKS = [
-  { label: t("menu.all"), count: 0, isActive: true },
-  { label: t("menu.archived"), count: 0 },
-  { label: t("menu.completed"), count: 0 },
-  { label: t("menu.phaseTwo"), count: 0 },
+  { label: t("menu.all"), isActive: true },
+  { label: t("menu.archived") },
+  { label: t("menu.completed") },
+  { label: t("menu.phaseTwo") },
 ];
 
 export const DEFAULT_PAGE_SIZE = 10;
