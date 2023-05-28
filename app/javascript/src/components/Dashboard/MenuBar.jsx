@@ -19,7 +19,7 @@ const MenuBar = ({
 
   return (
     <NeetoUIMenuBar showMenu={showMenu} title={title}>
-      {commonBlocks.map(({ label, count, isActive }) => (
+      {commonBlocks.map(({ label, count, isActive = false }) => (
         <NeetoUIMenuBar.Block
           active={isActive}
           count={count}

@@ -3,18 +3,25 @@
     "allNotes": "All Notes",
     "note_one": "Note",
     "note_other": "Notes",
+    "contact_one": "Contact",
+    "contact_other": "Contacts",
+    "allContacts": "All Contacts",
     "title": "Title",
     "description": "Description",
     "tag_one": "Tag",
     "tag_other": "Tags",
-    "assignedContact": "Assigned Contact",
+    "assignedContact": "Assigned contact",
     "createdAgo": "Created {{time}}",
     "gettingStarted": "Getting Started",
     "onboarding": "Onboarding",
     "userFlow": "User Flow",
     "bugs": "Bugs",
     "ux": "UX",
-    "v2": "V2"
+    "v2": "V2",
+    "nameAndRole": "Name & role",
+    "email": "Email",
+    "createdAt": "Created at",
+    "settings": "Settings"
   },
   "button": {
     "addEntity": "Add {{entity}}",
@@ -48,7 +55,10 @@
     "asia": "Asia",
     "sales": "Sales",
     "finance": "Finance",
-    "userExperience": "User Experience"
+    "userExperience": "User Experience",
+    "archived": "Archived",
+    "completed": "Completed",
+    "phaseTwo": "Phase 2"
   },
   "actions": {
     "edit": "Edit",

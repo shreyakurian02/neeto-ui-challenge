@@ -37,16 +37,19 @@ export const VALIDATION_SCHEMA = yup.object().shape({
     )
     .min(
       1,
-      t("validations.minimum", { value: 1, entity: t("common.tag", SINGULAR) })
+      t("validations.minimum", {
+        value: 1,
+        entity: t("common.tag", SINGULAR).toLowerCase(),
+      })
     )
     .required(t("validations.required", { entity: t("common.tag", SINGULAR) })),
 });
 
 export const COMMON_MENU_BLOCKS = [
   { label: t("menu.all"), count: 200, isActive: true },
-  { label: t("menu.users"), count: 80, isActive: false },
-  { label: t("menu.leads"), count: 60, isActive: false },
-  { label: t("menu.visitors"), count: 60, isActive: false },
+  { label: t("menu.users"), count: 80 },
+  { label: t("menu.leads"), count: 60 },
+  { label: t("menu.visitors"), count: 60 },
 ];
 
 export const SEGMENT_MENU_BLOCKS = [
