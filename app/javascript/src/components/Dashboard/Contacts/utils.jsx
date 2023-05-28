@@ -15,16 +15,15 @@ export const getColumnData = setIsDeleteAlertOpen => [
     dataIndex: "name",
     key: "name",
     title: t("common.nameAndRole"),
-    render: (text, { profileImage }) => (
+    render: (name, { profileImage, role }) => (
       <div className="flex items-center space-x-3">
-        <Avatar
-          size="large"
-          user={{
-            imageUrl: profileImage,
-            name: text,
-          }}
-        />
-        <Typography style="h4">{text}</Typography>
+        <Avatar size="large" user={{ imageUrl: profileImage, name }} />
+        <div className="flex flex-col">
+          <Typography style="h5">{name}</Typography>
+          <Typography className="neeto-ui-text-gray-700" style="body3">
+            {role}
+          </Typography>
+        </div>
       </div>
     ),
   },

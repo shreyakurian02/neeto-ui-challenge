@@ -3,73 +3,18 @@ import * as yup from "yup";
 
 import { SINGULAR } from "constants";
 
-export const ROW_DATA = [
-  {
-    id: 1,
-    name: "Ronald Richards",
-    email: "jake.peralta@gmail.com",
+export const ROW_DATA = Array.from({ length: 12 }, (_, index) => {
+  const isEven = index % 2 === 0;
+
+  return {
+    id: index + 1,
+    name: isEven ? "Ronald Richards" : "Jack Jones",
+    email: "albert@borer.com",
     createdAt: "Feb 5, 2021",
-    profileImage: "https://i.pravatar.cc/40",
-  },
-  {
-    id: 2,
-    name: "Jack Jones",
-    email: "jake.peralta@gmail.com",
-    createdAt: "Feb 5, 2021",
-  },
-  {
-    id: 3,
-    name: "Jack Smith",
-    email: "jake.peralta@gmail.com",
-    createdAt: "Feb 5, 2021",
-    profileImage: "https://i.pravatar.cc/80",
-  },
-  {
-    id: 4,
-    name: "Oliver Jones",
-    email: "jake.peralta@gmail.com",
-    createdAt: "Feb 5, 2021",
-  },
-  {
-    id: 5,
-    name: "Jack Smith",
-    email: "jake.peralta@gmail.com",
-    createdAt: "Feb 5, 2021",
-    profileImage: "https://i.pravatar.cc/80",
-  },
-  {
-    id: 6,
-    name: "Oliver Jones",
-    email: "jake.peralta@gmail.com",
-    createdAt: "Feb 5, 2021",
-  },
-  {
-    id: 7,
-    name: "Jack Smith",
-    email: "jake.peralta@gmail.com",
-    createdAt: "Feb 5, 2021",
-    profileImage: "https://i.pravatar.cc/80",
-  },
-  {
-    id: 8,
-    name: "Oliver Jones",
-    email: "jake.peralta@gmail.com",
-    createdAt: "Feb 5, 2021",
-  },
-  {
-    id: 9,
-    name: "Jack Smith",
-    email: "jake.peralta@gmail.com",
-    createdAt: "Feb 5, 2021",
-    profileImage: "https://i.pravatar.cc/80",
-  },
-  {
-    id: 10,
-    name: "Oliver Jones",
-    email: "jake.peralta@gmail.com",
-    createdAt: "Feb 5, 2021",
-  },
-];
+    role: "owner",
+    profileImage: isEven && "https://i.pravatar.cc/40",
+  };
+});
 
 export const COMMON_MENU_BLOCKS = [
   { label: t("menu.all"), isActive: true },
