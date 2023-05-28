@@ -42,15 +42,19 @@ const Form = ({ onClose, refetch, note, isEdit }) => {
               className="w-full flex-grow-0"
               label={t("common.title")}
               name="title"
-              placeholder={t("placeholder.title")}
+              placeholder={t("placeholder.enterField", {
+                field: t("common.title").toLowerCase(),
+              })}
             />
             <Textarea
               required
               className="w-full flex-grow-0"
               label={t("common.description")}
               name="description"
-              placeholder={t("placeholder.description")}
               rows={1}
+              placeholder={t("placeholder.enterField", {
+                field: t("common.description").toLowerCase(),
+              })}
             />
             <Select
               isSearchable

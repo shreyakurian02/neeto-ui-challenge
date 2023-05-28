@@ -16,11 +16,13 @@ import {
   COMMON_MENU_BLOCKS,
   DEFAULT_PAGE_SIZE,
 } from "./constants";
+import NewContactPane from "./Pane/Create";
 
 const Contacts = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedRowIds, setSelectedRowIds] = useState([]);
+  const [isNewContactPaneOpen, setIsNewContactPaneOpen] = useState(false);
 
   const {
     Menu,
@@ -64,8 +66,9 @@ const Contacts = () => {
             <Button
               icon={Plus}
               label={t("button.addEntity", {
-                entity: t("common.contact", SINGULAR),
+                entity: t("common.contact", SINGULAR).toLowerCase(),
               })}
+              onClick={() => setIsNewContactPaneOpen(true)}
             />
           }
           searchProps={{
@@ -87,6 +90,10 @@ const Contacts = () => {
             classnames({ "neeto-ui-bg-gray-200": index % 2 !== 0 })
           }
           onRowSelect={handleRowSelect}
+        />
+        <NewContactPane
+          isOpen={isNewContactPaneOpen}
+          onClose={() => setIsNewContactPaneOpen(false)}
         />
       </Container>
     </>

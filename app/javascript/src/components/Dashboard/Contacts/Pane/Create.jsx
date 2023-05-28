@@ -7,9 +7,7 @@ import { SINGULAR } from "constants";
 
 import Form from "./Form";
 
-import { INITIAL_FORM_VALUES } from "../constants";
-
-const Create = ({ fetchNotes, isOpen, onClose }) => {
+const Create = ({ isOpen, onClose }) => {
   const { t } = useTranslation();
 
   return (
@@ -17,16 +15,11 @@ const Create = ({ fetchNotes, isOpen, onClose }) => {
       <Pane.Header>
         <Typography style="h2" weight="semibold">
           {t("headers.addEntity", {
-            entity: t("common.note", SINGULAR).toLowerCase(),
+            entity: t("common.contact", SINGULAR).toLowerCase(),
           })}
         </Typography>
       </Pane.Header>
-      <Form
-        isEdit={false}
-        note={INITIAL_FORM_VALUES}
-        refetch={fetchNotes}
-        onClose={onClose}
-      />
+      <Form onClose={onClose} />
     </Pane>
   );
 };
