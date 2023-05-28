@@ -1,55 +1,35 @@
 import React, { useState } from "react";
 
 import classnames from "classnames";
-import { Plus, MenuHorizontal } from "neetoicons";
-import { Button, Table, Dropdown } from "neetoui";
+import { Plus } from "neetoicons";
+import { Button, Table, Alert, Toastr } from "neetoui";
 import { Container, Header } from "neetoui/layouts";
 import { useTranslation } from "react-i18next";
-import { noop } from "utils";
 
 import MenuBar from "components/Dashboard/MenuBar";
 import { SINGULAR, PLURAL } from "constants";
 
-import {
-  COLUMN_DATA,
-  ROW_DATA,
-  COMMON_MENU_BLOCKS,
-  DEFAULT_PAGE_SIZE,
-} from "./constants";
+import { ROW_DATA, COMMON_MENU_BLOCKS, DEFAULT_PAGE_SIZE } from "./constants";
 import NewContactPane from "./Pane/Create";
+import { getColumnData } from "./utils";
 
 const Contacts = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedRowIds, setSelectedRowIds] = useState([]);
+  const [isDeleteAlertOpen, setIsDeleteAlertOpen] = useState(false);
   const [isNewContactPaneOpen, setIsNewContactPaneOpen] = useState(false);
-
-  const {
-    Menu,
-    MenuItem: { Button: MenuButton },
-  } = Dropdown;
 
   const { t } = useTranslation();
 
   const handleRowSelect = ids => setSelectedRowIds(ids);
 
-  const columnData = COLUMN_DATA.map(column => {
-    if (column.key === "action") {
-      return {
-        ...column,
-        render: () => (
-          <Dropdown buttonStyle="text" className="p-4" icon={MenuHorizontal}>
-            <Menu>
-              <MenuButton onClick={noop}>{t("actions.edit")}</MenuButton>
-              <MenuButton onClick={noop}>{t("actions.delete")}</MenuButton>
-            </Menu>
-          </Dropdown>
-        ),
-      };
-    }
-
-    return column;
-  });
+  const handleDelete = () => {
+    Toastr.success(
+      t("toastr.success.itemDeleted", { entity: t("common.contact", SINGULAR) })
+    );
+    setIsDeleteAlertOpen(false);
+  };
 
   return (
     <>
@@ -80,7 +60,7 @@ const Contacts = () => {
         <Table
           fixedHeight
           rowSelection
-          columnData={columnData}
+          columnData={getColumnData(setIsDeleteAlertOpen)}
           defaultPageSize={DEFAULT_PAGE_SIZE}
           rowData={ROW_DATA}
           selectedRowKeys={selectedRowIds}
@@ -94,6 +74,17 @@ const Contacts = () => {
         <NewContactPane
           isOpen={isNewContactPaneOpen}
           onClose={() => setIsNewContactPaneOpen(false)}
+        />
+        <Alert
+          isOpen={isDeleteAlertOpen}
+          message={t("alerts.deleteMessage", {
+            entity: t("common.contact", SINGULAR).toLowerCase(),
+          })}
+          title={t("alerts.deleteTitle", {
+            entity: t("common.contact", SINGULAR).toLowerCase(),
+          })}
+          onClose={() => setIsDeleteAlertOpen(false)}
+          onSubmit={handleDelete}
         />
       </Container>
     </>
