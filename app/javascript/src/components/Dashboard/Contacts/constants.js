@@ -25,6 +25,8 @@ export const COMMON_MENU_BLOCKS = [
 
 export const DEFAULT_PAGE_SIZE = 10;
 
+export const TOTAL_RECORD_COUNT = 20;
+
 export const INITIAL_FORM_VALUES = {
   firstName: "",
   lastName: "",

@@ -40,7 +40,8 @@
     "search": "Search name, email, phone number etc.",
     "enterField": "Enter {{field}}",
     "selectRole": "Select role",
-    "selectTags": "Select tags"
+    "selectTags": "Select tags",
+    "selectContact": "Select contact"
   },
   "emptyState": {
     "entityTitle": "Looks like you don't have any {{entity}}!",

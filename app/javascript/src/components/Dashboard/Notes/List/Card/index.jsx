@@ -7,14 +7,15 @@ import { noop } from "utils";
 
 import Footer from "./Footer";
 
+const {
+  Menu,
+  MenuItem: { Button },
+} = Dropdown;
+
 const Card = ({ note, setIsDeleteAlertOpen }) => {
   const { t } = useTranslation();
 
   const { description, title, created_at: createdAt } = note;
-  const {
-    Menu,
-    MenuItem: { Button },
-  } = Dropdown;
 
   return (
     <div className="neeto-ui-shadow-xs neeto-ui-border-gray-300 neeto-ui-rounded-sm w-full border p-4">

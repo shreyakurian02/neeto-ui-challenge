@@ -72,7 +72,12 @@ const Form = ({ onClose }) => {
             label={t("button.saveChanges")}
             type="submit"
           />
-          <Button label={t("button.cancel")} style="text" onClick={onClose} />
+          <Button
+            label={t("button.cancel")}
+            style="text"
+            type="reset"
+            onClick={onClose}
+          />
         </Pane.Footer>
       </FormikForm>
     </Formik>
