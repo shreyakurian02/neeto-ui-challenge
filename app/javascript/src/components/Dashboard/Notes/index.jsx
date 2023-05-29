@@ -65,7 +65,6 @@ const Notes = () => {
           actionBlock={
             <Button
               icon={Plus}
-              size="small"
               label={t("button.addEntity", {
                 entity: t("common.note", SINGULAR).toLowerCase(),
               })}

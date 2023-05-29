@@ -10,7 +10,7 @@ const {
   MenuItem: { Button: MenuButton },
 } = Dropdown;
 
-export const getColumnData = setIsDeleteAlertOpen => [
+export const buildColumnData = setIsDeleteAlertOpen => [
   {
     dataIndex: "name",
     key: "name",

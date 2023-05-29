@@ -63,7 +63,7 @@ const Form = ({ onClose, refetch, note, isEdit }) => {
               label={t("common.assignedContact")}
               name="assignedContact"
               options={ASSIGNED_CONTACTS}
-              placeholder={t("placeholder.selectRole")}
+              placeholder={t("placeholder.selectContact")}
             />
             <Select
               isMulti
@@ -85,7 +85,12 @@ const Form = ({ onClose, refetch, note, isEdit }) => {
               loading={isSubmitting}
               type="submit"
             />
-            <Button label={t("button.cancel")} style="text" onClick={onClose} />
+            <Button
+              label={t("button.cancel")}
+              style="text"
+              type="reset"
+              onClick={onClose}
+            />
           </Pane.Footer>
         </FormikForm>
       )}

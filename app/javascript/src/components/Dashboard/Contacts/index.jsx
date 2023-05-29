@@ -11,9 +11,14 @@ import EmptyState from "components/commons/EmptyState";
 import MenuBar from "components/Dashboard/MenuBar";
 import { SINGULAR, PLURAL } from "constants";
 
-import { ROW_DATA, COMMON_MENU_BLOCKS, DEFAULT_PAGE_SIZE } from "./constants";
+import {
+  ROW_DATA,
+  COMMON_MENU_BLOCKS,
+  DEFAULT_PAGE_SIZE,
+  TOTAL_RECORD_COUNT,
+} from "./constants";
 import NewContactPane from "./Pane/Create";
-import { getColumnData } from "./utils";
+import { buildColumnData } from "./utils";
 
 const Contacts = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -63,12 +68,12 @@ const Contacts = () => {
           <Table
             fixedHeight
             rowSelection
-            columnData={getColumnData(setIsDeleteAlertOpen)}
+            columnData={buildColumnData(setIsDeleteAlertOpen)}
             defaultPageSize={DEFAULT_PAGE_SIZE}
             rowData={ROW_DATA}
             selectedRowKeys={selectedRowIds}
             shouldDynamicallyRenderRowSize={false}
-            totalCount={20}
+            totalCount={TOTAL_RECORD_COUNT}
             rowClassName={(_, index) =>
               classnames({ "neeto-ui-bg-gray-200": index % 2 !== 0 })
             }
