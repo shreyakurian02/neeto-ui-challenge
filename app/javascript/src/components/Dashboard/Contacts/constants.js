@@ -4,15 +4,15 @@ import * as yup from "yup";
 import { SINGULAR } from "constants";
 
 export const ROW_DATA = Array.from({ length: 12 }, (_, index) => {
-  const isOdd = index % 2;
+  const isEven = index % 2 === 0;
 
   return {
     id: index + 1,
-    name: isOdd ? "Jack Jones" : "Ronald Richards",
+    name: isEven ? "Ronald Richards" : "Jack Jones",
     email: "albert@borer.com",
     createdAt: "Feb 5, 2021",
     role: "owner",
-    profileImage: isOdd && "https://i.pravatar.cc/40",
+    profileImage: !isEven && "https://i.pravatar.cc/40",
   };
 });
 
