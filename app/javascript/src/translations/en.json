@@ -51,7 +51,8 @@
   "validations": {
     "required": "{{entity}} is required",
     "minimum": "Atleast {{value}} {{entity}} is required",
-    "invalidEmail": "Email address must be valid"
+    "invalidEmail": "Email address must be valid",
+    "validAlphaNumeric": "Must contain at least one alphanumeric character"
   },
   "menu": {
     "segments": "Segments",
