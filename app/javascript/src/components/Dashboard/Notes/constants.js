@@ -13,6 +13,7 @@ export const INITIAL_FORM_VALUES = {
 export const VALIDATION_SCHEMA = yup.object().shape({
   title: yup
     .string()
+    .matches(/.*[a-zA-Z0-9].*/, t("validations.validAlphaNumeric"))
     .required(t("validations.required", { entity: t("common.title") })),
   description: yup
     .string()

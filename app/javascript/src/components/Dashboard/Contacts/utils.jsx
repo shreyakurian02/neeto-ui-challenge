@@ -10,22 +10,35 @@ const {
   MenuItem: { Button: MenuButton },
 } = Dropdown;
 
+const renderProfile = ({ name, record: { profileImage, role } }) => (
+  <div className="flex items-center space-x-3">
+    <Avatar size="large" user={{ imageUrl: profileImage, name }} />
+    <div className="flex flex-col">
+      <Typography style="h5">{name}</Typography>
+      <Typography className="neeto-ui-text-gray-700" style="body3">
+        {role}
+      </Typography>
+    </div>
+  </div>
+);
+
+const renderAction = setIsDeleteAlertOpen => (
+  <Dropdown buttonStyle="text" className="p-4" icon={MenuHorizontal}>
+    <Menu>
+      <MenuButton onClick={noop}>{t("actions.edit")}</MenuButton>
+      <MenuButton onClick={() => setIsDeleteAlertOpen(true)}>
+        {t("actions.delete")}
+      </MenuButton>
+    </Menu>
+  </Dropdown>
+);
+
 export const buildColumnData = setIsDeleteAlertOpen => [
   {
     dataIndex: "name",
     key: "name",
     title: t("common.nameAndRole"),
-    render: (name, { profileImage, role }) => (
-      <div className="flex items-center space-x-3">
-        <Avatar size="large" user={{ imageUrl: profileImage, name }} />
-        <div className="flex flex-col">
-          <Typography style="h5">{name}</Typography>
-          <Typography className="neeto-ui-text-gray-700" style="body3">
-            {role}
-          </Typography>
-        </div>
-      </div>
-    ),
+    render: (name, record) => renderProfile({ name, record }),
   },
   {
     dataIndex: "email",
@@ -41,15 +54,6 @@ export const buildColumnData = setIsDeleteAlertOpen => [
     dataIndex: "action",
     key: "action",
     align: "right",
-    render: () => (
-      <Dropdown buttonStyle="text" className="p-4" icon={MenuHorizontal}>
-        <Menu>
-          <MenuButton onClick={noop}>{t("actions.edit")}</MenuButton>
-          <MenuButton onClick={() => setIsDeleteAlertOpen(true)}>
-            {t("actions.delete")}
-          </MenuButton>
-        </Menu>
-      </Dropdown>
-    ),
+    render: () => renderAction(setIsDeleteAlertOpen),
   },
 ];

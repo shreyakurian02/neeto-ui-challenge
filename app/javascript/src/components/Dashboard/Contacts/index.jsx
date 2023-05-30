@@ -61,7 +61,7 @@ const Contacts = () => {
           searchProps={{
             value: searchTerm,
             placeholder: t("placeholder.search"),
-            onChange: e => setSearchTerm(e.target.value),
+            onChange: event => setSearchTerm(event.target.value),
           }}
         />
         {ROW_DATA.length ? (
